@@ -3,7 +3,9 @@ package br.com.sistemacadastro.service;
 import br.com.sistemacadastro.dao.ProdutoDAO;
 import br.com.sistemacadastro.exception.RegistroNaoEncontradoException;
 import br.com.sistemacadastro.exception.ValidacaoException;
+import br.com.sistemacadastro.model.NivelEstoque;
 import br.com.sistemacadastro.model.Produto;
+import br.com.sistemacadastro.model.StatusProduto;
 
 import java.util.List;
 
@@ -14,6 +16,11 @@ import java.util.List;
  * aplicado aqui.
  */
 public class ProdutoService {
+
+    /** Até esta quantidade (inclusive) o estoque é considerado CRÍTICO. */
+    public static final int LIMITE_CRITICO = 3;
+    /** Até esta quantidade (inclusive) o estoque é considerado BAIXO. */
+    public static final int LIMITE_BAIXO = 10;
 
     private final ProdutoDAO produtoDAO;
 
@@ -48,6 +55,69 @@ public class ProdutoService {
     public Produto buscarPorIdOuFalhar(int id) {
         return produtoDAO.buscarPorId(id)
             .orElseThrow(() -> new RegistroNaoEncontradoException("Produto não encontrado (id=" + id + ")."));
+    }
+
+    // ------------------------------------------------------------------
+    // Regras de cálculo (Etapa 7) — métodos próprios, sem acesso a banco,
+    // criados para serem testados de forma isolada (SRP).
+    // ------------------------------------------------------------------
+
+    /**
+     * Classifica o estoque: 0 = ESGOTADO; 1 a 3 = CRITICO; 4 a 10 = BAIXO;
+     * 11 ou mais = NORMAL. Quantidade negativa é inválida.
+     */
+    public NivelEstoque calcularNivelEstoque(int quantidade) {
+        if (quantidade < 0) {
+            throw new ValidacaoException("A quantidade não pode ser negativa.");
+        }
+        if (quantidade == 0) {
+            return NivelEstoque.ESGOTADO;
+        }
+        if (quantidade <= LIMITE_CRITICO) {
+            return NivelEstoque.CRITICO;
+        }
+        if (quantidade <= LIMITE_BAIXO) {
+            return NivelEstoque.BAIXO;
+        }
+        return NivelEstoque.NORMAL;
+    }
+
+    /**
+     * Calcula a quantidade restante depois de uma venda. A quantidade
+     * vendida deve ser maior que zero e não pode superar o estoque atual.
+     */
+    public int calcularQuantidadeAposVenda(int quantidadeAtual, int quantidadeVendida) {
+        if (quantidadeAtual < 0) {
+            throw new ValidacaoException("A quantidade em estoque não pode ser negativa.");
+        }
+        if (quantidadeVendida <= 0) {
+            throw new ValidacaoException("A quantidade vendida deve ser maior que zero.");
+        }
+        if (quantidadeVendida > quantidadeAtual) {
+            throw new ValidacaoException("Estoque insuficiente para essa venda.");
+        }
+        return quantidadeAtual - quantidadeVendida;
+    }
+
+    /** Define o status coerente com a quantidade: zero = VENDIDO; acima de zero = DISPONIVEL. */
+    public StatusProduto definirStatusPorQuantidade(int quantidade) {
+        if (quantidade < 0) {
+            throw new ValidacaoException("A quantidade não pode ser negativa.");
+        }
+        return quantidade == 0 ? StatusProduto.VENDIDO : StatusProduto.DISPONIVEL;
+    }
+
+    /**
+     * Registra a venda de uma quantidade de um produto cadastrado:
+     * recalcula a quantidade, ajusta o status e persiste a alteração.
+     */
+    public Produto registrarVenda(int id, int quantidadeVendida) {
+        Produto produto = buscarPorIdOuFalhar(id);
+        int restante = calcularQuantidadeAposVenda(produto.getQuantidade(), quantidadeVendida);
+        produto.setQuantidade(restante);
+        produto.setStatus(definirStatusPorQuantidade(restante));
+        produtoDAO.atualizar(produto);
+        return produto;
     }
 
     private void validar(Produto produto) {
