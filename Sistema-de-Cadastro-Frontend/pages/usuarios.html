@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usuários — Sistema de Cadastro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/tabelas.css">
+</head>
+<body>
+  <header id="topo"></header>
+  <main class="pagina">
+    <div class="pagina__cabecalho">
+      <div>
+        <h1 class="pagina__titulo">Usuários</h1>
+        <p class="pagina__subtitulo">Quem tem acesso ao sistema e com qual perfil.</p>
+      </div>
+      <a class="botao botao--primario" href="usuario-form.html">+ Novo usuário</a>
+    </div>
+
+    <div class="barra-ferramentas">
+      <div class="campo busca">
+        <label class="visualmente-oculto" for="busca">Buscar usuário</label>
+        <input type="search" id="busca" placeholder="Buscar por nome, login ou e-mail" autocomplete="off">
+      </div>
+    </div>
+    <p class="contador" id="contador" aria-live="polite"></p>
+
+    <div class="cartao tabela-caixa">
+      <table class="tabela" id="tabela">
+        <thead>
+          <tr><th scope="col">Nome</th><th scope="col">E-mail</th><th scope="col">Login</th><th scope="col">Perfil</th><th scope="col"><span class="visualmente-oculto">Ações</span></th></tr>
+        </thead>
+        <tbody id="corpo-tabela"></tbody>
+      </table>
+      <div class="tabela-vazia" id="vazio" hidden><strong>Nenhum usuário encontrado</strong>Tente outro termo de busca.</div>
+    </div>
+  </main>
+  <script src="../js/util.js"></script>
+  <script src="../js/dados.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/usuarios.js"></script>
+</body>
+</html>

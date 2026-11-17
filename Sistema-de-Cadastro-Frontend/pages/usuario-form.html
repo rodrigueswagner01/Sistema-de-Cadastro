@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usuário — Sistema de Cadastro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/formularios.css">
+</head>
+<body>
+  <header id="topo"></header>
+  <main class="pagina">
+    <div class="pagina__cabecalho">
+      <div>
+        <h1 class="pagina__titulo" id="titulo-pagina">Novo usuário</h1>
+        <p class="pagina__subtitulo" id="subtitulo-pagina">Preencha os dados de acesso.</p>
+      </div>
+    </div>
+
+    <section class="cartao formulario">
+      <form id="form-usuario" novalidate>
+        <div class="campo" id="campo-nome">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" autocomplete="off" aria-describedby="erro-nome">
+          <span class="mensagem-campo" id="erro-nome"></span>
+        </div>
+        <div class="campo" id="campo-email">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" autocomplete="off" aria-describedby="erro-email">
+          <span class="mensagem-campo" id="erro-email"></span>
+        </div>
+        <div class="linha-campos">
+          <div class="campo" id="campo-login">
+            <label for="login">Login</label>
+            <input type="text" id="login" autocomplete="off" aria-describedby="erro-login">
+            <span class="mensagem-campo" id="erro-login"></span>
+          </div>
+          <div class="campo" id="campo-perfil">
+            <label for="perfil">Perfil</label>
+            <select id="perfil" aria-describedby="erro-perfil">
+              <option value="">Selecione…</option>
+              <option value="ADMINISTRADOR">Administrador</option>
+              <option value="TECNICO">Técnico</option>
+              <option value="OPERADOR">Operador</option>
+            </select>
+            <span class="mensagem-campo" id="erro-perfil"></span>
+          </div>
+        </div>
+        <div class="campo" id="campo-senha">
+          <label for="senha" id="rotulo-senha">Senha</label>
+          <div class="grupo-senha">
+            <input type="password" id="senha" autocomplete="new-password" aria-describedby="dica-senha erro-senha">
+            <button type="button" id="mostrar-senha" aria-pressed="false">Mostrar</button>
+          </div>
+          <span class="dica" id="dica-senha"></span>
+          <span class="mensagem-campo" id="erro-senha"></span>
+        </div>
+
+        <div class="formulario__acoes">
+          <a class="botao botao--secundario" href="usuarios.html">Cancelar</a>
+          <button type="submit" class="botao botao--primario">Salvar usuário</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="../js/util.js"></script>
+  <script src="../js/dados.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/usuario-form.js"></script>
+</body>
+</html>

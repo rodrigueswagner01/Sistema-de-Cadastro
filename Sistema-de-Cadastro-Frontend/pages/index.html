@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar — Sistema de Cadastro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+  <div class="login">
+    <section class="login__marca" aria-label="Apresentação">
+      <div class="login__logo"><span class="marca__icone" aria-hidden="true">▣</span> Sistema de Cadastro</div>
+      <div class="login__texto">
+        <h1>Seu estoque sob controle, sem planilhas soltas.</h1>
+        <p>Cadastre produtos, acompanhe o nível do estoque e registre vendas em um só lugar, com acesso de acordo com o seu perfil.</p>
+      </div>
+      <div class="login__rodape">Projeto Integrador — UC15 · Etapa 8 (front-end)</div>
+    </section>
+
+    <main class="login__painel">
+      <div class="login__caixa">
+        <h2>Entrar</h2>
+        <p>Use seu login e senha para acessar o sistema.</p>
+
+        <div class="aviso aviso--erro" id="erro-geral" role="alert" hidden></div>
+
+        <form id="form-login" novalidate style="margin-top:16px">
+          <div class="campo">
+            <label for="login">Usuário</label>
+            <input type="text" id="login" name="login" autocomplete="username" autofocus>
+          </div>
+          <div class="campo">
+            <label for="senha">Senha</label>
+            <div class="senha-grupo">
+              <input type="password" id="senha" name="senha" autocomplete="current-password">
+              <button type="button" id="mostrar-senha" aria-pressed="false">Mostrar</button>
+            </div>
+          </div>
+          <button type="submit" class="botao botao--primario" style="width:100%">Entrar</button>
+        </form>
+
+        <aside class="login__exemplos" aria-label="Usuários de exemplo">
+          <h3>Usuários de exemplo (senha 123)</h3>
+          <ul>
+            <li><button type="button" data-exemplo="admin">admin <code>Administrador</code></button></li>
+            <li><button type="button" data-exemplo="tecnico">tecnico <code>Técnico</code></button></li>
+            <li><button type="button" data-exemplo="operador">operador <code>Operador</code></button></li>
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <noscript><p style="padding:16px">Este sistema precisa de JavaScript ativado.</p></noscript>
+  <script src="../js/util.js"></script>
+  <script src="../js/dados.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>

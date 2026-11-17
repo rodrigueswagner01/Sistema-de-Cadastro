@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consulta — Sistema de Cadastro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/tabelas.css">
+</head>
+<body>
+  <header id="topo"></header>
+  <main class="pagina">
+    <div class="pagina__cabecalho">
+      <div>
+        <h1 class="pagina__titulo">Consulta de produtos</h1>
+        <p class="pagina__subtitulo">Veja o que há em estoque. Esta tela é somente leitura.</p>
+      </div>
+    </div>
+
+    <div class="barra-ferramentas">
+      <div class="campo busca">
+        <label class="visualmente-oculto" for="busca">Buscar produto</label>
+        <input type="search" id="busca" placeholder="Digite parte do nome do produto" autocomplete="off">
+      </div>
+      <div class="campo">
+        <label class="visualmente-oculto" for="filtro-nivel">Filtrar por disponibilidade</label>
+        <select id="filtro-nivel">
+          <option value="">Qualquer disponibilidade</option>
+          <option value="NORMAL">Normal</option>
+          <option value="BAIXO">Baixo</option>
+          <option value="CRITICO">Crítico</option>
+          <option value="ESGOTADO">Esgotado</option>
+        </select>
+      </div>
+      <button type="button" class="botao botao--secundario" id="limpar">Limpar</button>
+    </div>
+    <p class="contador" id="contador" aria-live="polite"></p>
+
+    <div class="cartao tabela-caixa">
+      <table class="tabela" id="tabela">
+        <thead>
+          <tr><th scope="col">Produto</th><th scope="col">Descrição</th><th scope="col">Disponibilidade</th><th scope="col">Status</th></tr>
+        </thead>
+        <tbody id="corpo-tabela"></tbody>
+      </table>
+      <div class="tabela-vazia" id="vazio" hidden><strong>Nenhum produto encontrado</strong>Verifique a grafia ou limpe os filtros.</div>
+    </div>
+  </main>
+  <script src="../js/util.js"></script>
+  <script src="../js/dados.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/consulta.js"></script>
+</body>
+</html>

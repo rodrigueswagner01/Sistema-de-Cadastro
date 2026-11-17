@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Início — Sistema de Cadastro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <header id="topo"></header>
+  <main class="pagina">
+    <div class="pagina__cabecalho">
+      <div>
+        <h1 class="pagina__titulo" id="saudacao">Olá</h1>
+        <p class="pagina__subtitulo">Resumo do estoque neste momento.</p>
+      </div>
+      <div class="atalhos" id="atalhos"></div>
+    </div>
+
+    <section class="indicadores" id="indicadores" aria-label="Indicadores"></section>
+
+    <div class="painel-duplo">
+      <section class="cartao painel" aria-labelledby="t-niveis">
+        <h2 id="t-niveis">Estoque por nível</h2>
+        <div class="barra-niveis" id="barra-niveis" role="img"></div>
+        <ul class="legenda" id="legenda-niveis"></ul>
+      </section>
+      <section class="cartao painel" aria-labelledby="t-atencao">
+        <h2 id="t-atencao">Precisam de atenção</h2>
+        <ul class="lista-atencao" id="lista-atencao"></ul>
+      </section>
+    </div>
+
+    <div class="rodape-painel">
+      <span>Os dados desta demonstração ficam salvos apenas neste navegador.</span>
+      <button type="button" class="botao botao--fantasma botao--pequeno" id="restaurar">Restaurar dados de exemplo</button>
+    </div>
+  </main>
+  <script src="../js/util.js"></script>
+  <script src="../js/dados.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
