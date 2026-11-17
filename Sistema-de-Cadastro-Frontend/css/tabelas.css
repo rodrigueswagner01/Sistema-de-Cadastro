@@ -1,0 +1,27 @@
+/* Tabelas de listagem (viram cartões empilhados em telas estreitas) */
+.tabela-caixa { overflow: hidden; }
+.tabela { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+.tabela th {
+  text-align: left; padding: 12px 16px; background: var(--neutro-fundo); color: var(--tinta);
+  font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700;
+}
+.tabela td { padding: 14px 16px; border-top: 1px solid var(--borda); vertical-align: middle; }
+.tabela tbody tr:hover { background: #fbf9f4; }
+.tabela .numero { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.tabela__nome { font-weight: 600; color: var(--tinta); }
+.tabela__acoes { display: flex; gap: 6px; justify-content: flex-end; flex-wrap: nowrap; }
+.tabela-vazia { padding: var(--espaco-7) var(--espaco-5); text-align: center; color: var(--texto-suave); }
+.tabela-vazia strong { display: block; color: var(--tinta); font-family: var(--fonte-titulo); font-size: 1.05rem; margin-bottom: 4px; }
+.contador { color: var(--texto-suave); font-size: 0.9rem; margin: 0 0 var(--espaco-3); }
+
+@media (max-width: 720px) {
+  .tabela thead { display: none; }
+  .tabela, .tabela tbody, .tabela tr, .tabela td { display: block; width: 100%; }
+  .tabela tr { padding: var(--espaco-3) var(--espaco-4); border-top: 1px solid var(--borda); }
+  .tabela tr:first-child { border-top: 0; }
+  .tabela td { border: 0; padding: 4px 0; display: flex; justify-content: space-between; gap: var(--espaco-4); text-align: right; }
+  .tabela td::before { content: attr(data-label); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--texto-suave); text-align: left; flex-shrink: 0; padding-top: 3px; }
+  .tabela td.tabela__acoes-celula::before { content: none; }
+  .tabela__acoes { justify-content: flex-start; flex-wrap: wrap; margin-top: 6px; }
+  .tabela .numero { text-align: right; }
+}

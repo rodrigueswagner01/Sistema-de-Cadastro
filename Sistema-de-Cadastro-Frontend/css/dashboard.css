@@ -1,0 +1,26 @@
+/* Painel inicial: indicadores, distribuição por nível e atalhos */
+.indicadores { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--espaco-4); margin-bottom: var(--espaco-5); }
+.indicador { padding: var(--espaco-5); position: relative; overflow: hidden; }
+.indicador::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--tinta-clara); }
+.indicador--alerta::before { background: var(--coral); }
+.indicador__rotulo { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--texto-suave); }
+.indicador__valor { font-family: var(--fonte-titulo); font-size: 2.3rem; font-weight: 700; color: var(--tinta); line-height: 1.1; margin-top: 6px; }
+.indicador__nota { font-size: 0.85rem; color: var(--texto-suave); margin-top: 2px; }
+.painel-duplo { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--espaco-4); margin-bottom: var(--espaco-5); }
+.painel { padding: var(--espaco-5); }
+.painel h2 { font-size: 1.1rem; margin-bottom: var(--espaco-4); }
+.barra-niveis { display: flex; height: 22px; border-radius: 999px; overflow: hidden; background: var(--neutro-fundo); }
+.barra-niveis__parte { height: 100%; min-width: 0; transition: width 0.3s; }
+.legenda { list-style: none; margin: var(--espaco-4) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px var(--espaco-4); }
+.legenda li { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+.legenda__cor { width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0; }
+.legenda strong { margin-left: auto; font-variant-numeric: tabular-nums; }
+.lista-atencao { list-style: none; margin: 0; padding: 0; }
+.lista-atencao li { display: flex; justify-content: space-between; align-items: center; gap: var(--espaco-3); padding: 10px 0; border-top: 1px solid var(--borda); }
+.lista-atencao li:first-child { border-top: 0; padding-top: 0; }
+.lista-atencao a { color: var(--tinta); font-weight: 600; text-decoration: none; }
+.lista-atencao a:hover { text-decoration: underline; }
+.lista-atencao small { display: block; color: var(--texto-suave); font-weight: 400; }
+.atalhos { display: flex; gap: var(--espaco-3); flex-wrap: wrap; }
+.rodape-painel { margin-top: var(--espaco-6); font-size: 0.85rem; color: var(--texto-suave); display: flex; gap: var(--espaco-3); align-items: center; flex-wrap: wrap; }
+@media (max-width: 860px) { .painel-duplo { grid-template-columns: 1fr; } }

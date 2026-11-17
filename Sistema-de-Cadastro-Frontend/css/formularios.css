@@ -1,0 +1,20 @@
+/* Formulários de cadastro (usuário e produto) */
+.formulario { max-width: 720px; padding: var(--espaco-6); }
+.linha-campos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--espaco-4); }
+.previa-nivel { display: flex; align-items: center; gap: var(--espaco-2); font-size: 0.85rem; color: var(--texto-suave); min-height: 26px; }
+.formulario__acoes { display: flex; gap: var(--espaco-3); justify-content: flex-end; margin-top: var(--espaco-5); padding-top: var(--espaco-5); border-top: 1px solid var(--borda); flex-wrap: wrap; }
+.grupo-senha { position: relative; }
+.grupo-senha input { padding-right: 84px; }
+.grupo-senha button {
+  position: absolute; right: 6px; top: 6px; min-height: 34px; padding: 0 12px; border: 0; border-radius: 8px;
+  background: var(--neutro-fundo); color: var(--tinta); font: 600 0.8rem var(--fonte-corpo); cursor: pointer;
+}
+.resumo-erros { margin-bottom: var(--espaco-4); }
+.resumo-venda { background: var(--fundo); border-radius: var(--raio); padding: var(--espaco-3) var(--espaco-4); margin-bottom: var(--espaco-4); display: grid; gap: 6px; font-size: 0.92rem; }
+.resumo-venda div { display: flex; justify-content: space-between; align-items: center; gap: var(--espaco-3); }
+.resumo-venda span:first-child { color: var(--texto-suave); }
+@media (max-width: 640px) {
+  .formulario { padding: var(--espaco-4); }
+  .linha-campos { grid-template-columns: 1fr; }
+  .formulario__acoes .botao { flex: 1; }
+}

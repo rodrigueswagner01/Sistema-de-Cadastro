@@ -1,0 +1,54 @@
+/* ==========================================================
+   Sistema de Cadastro — tokens de design
+   Identidade: azul-tinta (confiança) + coral (ação) sobre fundo
+   areia. Verde, âmbar e vermelho ficam reservados aos estados
+   de estoque e às mensagens de erro.
+   ========================================================== */
+:root {
+  /* Marca */
+  --tinta: #1d2b45;
+  --tinta-clara: #33466b;
+  --coral: #d9512a;
+  --coral-escuro: #b8401d;
+  --coral-suave: #fdebe4;
+
+  /* Neutros */
+  --fundo: #f5f2ec;
+  --superficie: #ffffff;
+  --borda: #e2ddd2;
+  --borda-forte: #c9c2b3;
+  --texto: #1f2937;
+  --texto-suave: #5f6673;
+
+  /* Estados (texto / fundo) */
+  --ok: #1f6f4a;
+  --ok-fundo: #e1f3ea;
+  --atencao: #8a5a00;
+  --atencao-fundo: #fcefcf;
+  --critico: #a8400a;
+  --critico-fundo: #ffe8d5;
+  --perigo: #a4241a;
+  --perigo-fundo: #fde6e3;
+  --neutro: #4b5563;
+  --neutro-fundo: #eceae4;
+  --info: #264f93;
+  --info-fundo: #e3ecfb;
+
+  /* Tipografia */
+  --fonte-titulo: "Sora", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --fonte-corpo: "DM Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Espaçamento, raios e sombras */
+  --espaco-1: 4px;
+  --espaco-2: 8px;
+  --espaco-3: 12px;
+  --espaco-4: 16px;
+  --espaco-5: 24px;
+  --espaco-6: 32px;
+  --espaco-7: 48px;
+  --raio: 10px;
+  --raio-grande: 16px;
+  --sombra: 0 1px 2px rgba(29, 43, 69, 0.06), 0 4px 14px rgba(29, 43, 69, 0.06);
+  --sombra-forte: 0 12px 40px rgba(29, 43, 69, 0.22);
+  --largura-max: 1120px;
+}
